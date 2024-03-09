@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Krzysztof Rozmus">
+    <meta name="keywords" content="HTML, CSS, JavaScript, kursy JavaScript, JS">
+    <link rel="icon" href="img/logo_js@0.33x.png" type="image/gif" sizes="16x16" />
+    <!-- Tytuł karty -->
+    <title>Formularz - Zdarzenia</title>
+    <!-- Link do arkuszu stylów -->
+    <link rel="stylesheet" href="style.css">
+        <!-- Link do czcionek google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&family=Roboto+Slab&family=Rubik:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Banner -->
+    <header>
+        <h1>
+            <a href="index.html">
+                <img src="img/logo_js@0.33x.png" alt="Logo JavaScript">
+            </a>
+            <h1>Formularz</h1>
+        </h1>
+    </header>
+    <!-- Lewy panel - nawigacja -->
+    <aside>
+        <ul>
+            <li>
+                <a href="index.html">
+                    Strona główna
+                </a>
+            </li>
+            <li>
+                <a href="przyklad.html">
+                    Inny przykład
+                </a>
+            </li>
+            <li>
+                <a href="formularz.html">
+                    Formularz
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <!-- Główny prawy panel -->
+    <main>
+        <form id="myForm">
+            <!-- Pierwszy formularz - imię,nazwisko i wybrany język -->
+            <fieldset>
+                <legend>Wprowadź swoje imię i nazwisko żeby wyświetlić je w konsoli(pod F12)</legend>
+			    <input id="name" value="" oninput="czytaj()"/>
+			    <input id="surname" value=""/>
+            </fieldset>
+			<br>
+            <fieldset>
+                <legend>Twój ulubiony język obcy:</legend>
+			    <label for="html"><input type="radio" id="ang" name="fav_language" value="Ang">Język Angielski</label><br>
+			    <label for="css"><input type="radio" id="niem" name="fav_language" value="Niem">Język Niemiecki</label><br>
+			    <label for="javascript"><input type="radio" id="ros" name="fav_language" value="Ros">Język Rosyjski</label><br><br>
+			    <div id="fav_languageResult">Wybrałeś: </div>
+            </fieldset>
+		</form>
+        <br>
+        <!-- Obsługa pierwszego formularza -->
+        <script type="text/javascript">
+		    const input = document.querySelector("#name");
+		    const input1 = document.querySelector("#surname");
+		    function czytaj(){
+		        const val = input.value;
+		        if (!val.length) {
+			        console.log("Pole nie posiada żadnej wartości")
+		        } else {
+		            console.log("Twoje imię to: " + val[0].toUpperCase() + val.slice(1) );
+		        }
+		    }
+		    input1.addEventListener("input", e => {
+			    const val = input1.value;
+			    if (!val.length) {
+				    console.log("Pole nie ma żadnej wartości")
+			    } else {
+				    console.log("Twoje imię to: " + val[0].toUpperCase() + val.slice(1) );
+			    }
+		    });
+
+        
+		    function czytaj_radio(){
+		        const input2 = document.querySelector("#someRadio")
+		        if (input2.checked) {
+			        console.log("Wartość radio: ", input2.value);
+		        }
+		    }
+		    const form = document.querySelector("#myForm");
+		    const radioGroup = form.querySelectorAll("input[name=fav_language]");
+		    const resultElement = document.querySelector("#fav_languageResult");
+		    for (const radio of radioGroup) {
+			    radio.addEventListener("change", e => {
+				    for (const radio of radioGroup) {
+					    if (radio.checked) {
+						    resultElement.innerText = "Wybrałeś: "+radio.nextSibling.data;
+						    break;
+					    }
+				}
+			    });
+		     }
+		</script>
+        <form class="form" id="formFruit">
+            <fieldset>
+                <legend>Wybierz owoce</legend>
+                <label>
+                    <input type="checkbox" value="banan" name="fruit" />
+                    Banan
+                </label>
+                <label>
+                    <input type="checkbox" value="jablko" name="fruit" />
+                    Jabłko
+                </label>
+                <label>
+                <input type="checkbox" value="kiwi" name="fruit" />
+                    Kiwi
+                </label>
+                <label>
+                    <input type="checkbox" value="ananas" name="fruit" />
+                    Ananas
+                </label>
+                <label>
+                    <input type="checkbox" value="gruszka" name="fruit" />
+                    Gruszka
+                </label>
+                <br><br>
+                <div>
+                    Ilość wybranych owoców: <strong id="fruitResult"> </strong>
+                </div>
+            </fieldset>
+        </form>
+        <script>
+            const form1 = document.querySelector("#formFruit");
+            const checkboxGroup = form1.querySelectorAll("input[name=fruit]");
+            const fruitsResult = document.querySelector("#fruitResult");
+            for (const chk of checkboxGroup) {
+                chk.addEventListener("change", e => {
+                    fruitsResult.innerText = [...checkboxGroup].filter(el => el.checked).length;
+                    console.log(chk.value);
+                });
+            }     
+        </script>
+    </main>
+    <!-- Stopka -->
+    <footer>
+        <h3>
+            Zdarzenia JavaScript
+        </h3>
+        <p>Stronę opracował: Krzysztof Rozmus 2TP/24</p>
+    </footer>   
+</body>
+</html>

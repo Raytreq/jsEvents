@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Krzysztof Rozmus">
+    <meta name="keywords" content="HTML, CSS, JavaScript, kursy JavaScript, JS">
+    <link rel="icon" href="img/logo_js@0.33x.png" type="image/gif" sizes="16x16" />
+    <!-- Tytuł karty -->
+    <title>Przykłady - Zdarzenia</title>
+    <!-- Link do arkuszu stylów -->
+    <link rel="stylesheet" href="style.css">
+        <!-- Link do czcionek google -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&family=Roboto+Slab&family=Rubik:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Banner -->
+    <header>
+        <h1>
+            <a href="index.html">
+                <img src="img/logo_js@0.33x.png" alt="Logo JavaScript">
+            </a>
+            <h1>Skrypt pokazujący losowo wygenerowany kolor</h1>
+        </h1>
+    </header>
+    <!-- Lewy panel - nawigacja -->
+    <aside>
+        <ul>
+            <li>
+                <a href="index.html">
+                    Strona główna
+                </a>
+            </li>
+            <li>
+                <a href="przyklad.html">
+                    Inny przykład
+                </a>
+            </li>
+            <li>
+                <a href="formularz.html">
+                    Formularz
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <!-- Główny prawy panel -->
+    <main>
+            <div id="colorful">
+                <h2>Kolorowo!!!</h2>
+                <p>(Kliknij na mnie)</p>
+            </div>
+            <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function(event) {
+                const element = document.querySelector('#colorful');
+                element.onclick = function() {
+                    let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+                    document.getElementById("colorful").style.color = "#"+randomColor;
+                } 
+            });
+            </script>
+    </main>
+    <!-- Stopka -->
+    <footer>
+        <h3>
+            Zdarzenia JavaScript
+        </h3>
+        <p>Stronę opracował: Krzysztof Rozmus 2TP/24</p>
+    </footer>   
+</body>
+</html>

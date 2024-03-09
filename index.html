@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Krzysztof Rozmus">
+    <meta name="keywords" content="HTML, CSS, JavaScript, kursy JavaScript, JS">
+    <link rel="icon" href="img/logo_js@0.33x.png" type="image/gif" sizes="16x16" />
+    <!-- Tytuł karty -->
+    <title>Strona główna - Zdarzenia</title>
+    <!-- Link do arkuszu stylów -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Link do czcionek google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&family=Roboto+Slab&family=Rubik:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Banner -->
+    <header>
+        <h1>
+            <a href="index.html">
+                <img src="img/logo_js@0.33x.png" alt="Logo JavaScript">
+            </a>
+            <h1>Strona główna</h1>  
+        </h1>
+    </header>
+    <!-- Lewy panel - nawigacja -->
+    <aside>
+        <ul>
+            <li>
+                <a href="index.html">
+                    Strona główna
+                </a>
+            </li>
+            <li>
+                <a href="przyklad.html">
+                    Inny przykład
+                </a>
+            </li>
+            <li>
+                <a href="formularz.html">
+                    Formularz
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <!-- Główny prawy panel -->
+    <main>
+        <h2>Czym są zdarzenia?</h2>
+        <p>
+            Zdarzenia to czynności, które użytkownik wykonuje podczas odwiedzania naszej strony. Przykładowymi zdarzeniami mogą być przesunięcie kursora na obrazek, kliknięcie jakiegoś linka, wysłanie formularza, zaznaczenie jakiegoś obiektu czy naciśnięcie klawisza.
+            <br><br>
+             Większość zdarzeń wywoływana jest przez użytkownika - użytkownik kliknie to, użytkownik zrobi tamto etc. Istnieją też zdarzenia, które nie są bezpośrednio spowodowane przez użytkownika - przykładowo zdarzenie load, które zachodzi gdy załaduje się strona. Poniżej jest przykład kilku najprostszych zdarzeń z pierwszej kategorii(.onclick, .onmouseover i .onmouseout)
+
+        </p>
+        <p class="incentive">Kliknij na skrzynkę żeby ją otworzyć!</p>
+        <img src="img/skrzynia.png" alt="Skrzynia" id="chest">
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function(event) {
+                const element = document.querySelector('#chest');
+                element.onclick = function() {
+                    document.getElementById("chest").src="img/treasure.png";
+                }
+                element.onmouseover = function(){
+                    document.getElementById("chest").src="img/skrzynia_hover.png";
+                }
+                element.onmouseout = function(){
+                    document.getElementById("chest").src="img/skrzynia.png";
+                } 
+            });
+        </script>
+    </main>
+    <!-- Stopka -->
+    <footer>
+        <h3>
+            Zdarzenia JavaScript
+        </h3>
+        <p>Stronę opracował: Krzysztof Rozmus 2TP/24</p>
+    </footer>   
+</body>
+</html>
